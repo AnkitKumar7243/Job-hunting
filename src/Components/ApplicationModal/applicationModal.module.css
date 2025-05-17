@@ -1,0 +1,197 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--dark-grayish-cyan);
+  transition: color 0.2s;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  color: var(--very-dark-grayish-cyan);
+  background-color: var(--light-grayish-cyan-ft);
+}
+
+.modalHeader {
+  padding: 25px;
+  border-bottom: 1px solid var(--light-grayish-cyan-ft);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.companyLogo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.modalHeader h2 {
+  color: var(--very-dark-grayish-cyan);
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.companyName {
+  color: var(--desaturated-dark-cyan);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.jobDetails {
+  color: var(--dark-grayish-cyan);
+  font-size: 14px;
+}
+
+.applicationForm {
+  padding: 25px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--very-dark-grayish-cyan);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--light-grayish-cyan-ft);
+  border-radius: 5px;
+  font-family: 'Spartan', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--desaturated-dark-cyan);
+}
+
+.inputError {
+  border-color: #e74c3c !important;
+}
+
+.errorMessage {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.submitButton {
+  background-color: var(--desaturated-dark-cyan);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background-color: var(--very-dark-grayish-cyan);
+}
+
+.successMessage {
+  padding: 40px 25px;
+  text-align: center;
+}
+
+.successIcon {
+  width: 70px;
+  height: 70px;
+  background-color: #2ecc71;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 20px;
+}
+
+.successMessage h2 {
+  color: var(--very-dark-grayish-cyan);
+  margin-bottom: 15px;
+}
+
+.successMessage p {
+  color: var(--dark-grayish-cyan);
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .modalContent {
+    max-height: 80vh;
+  }
+  
+  .modalHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .companyLogo {
+    margin-bottom: 15px;
+  }
+}

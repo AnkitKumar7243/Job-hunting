@@ -1,0 +1,66 @@
+.job {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin-top: 48px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.jobFeatured {
+  border-left: 4px solid var(--desaturated-dark-cyan);
+}
+
+.jobInfos {
+  position: relative;
+}
+
+.jobInfos > img {
+  width: 52px;
+  position: absolute;
+  top: -50px;
+}
+
+.applyButton {
+  background-color: var(--desaturated-dark-cyan);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.applyButton:hover {
+  background-color: var(--very-dark-grayish-cyan);
+}
+
+@media (min-width: 900px){
+  .jobInfos {
+    display: flex;
+    align-items: center;
+  }
+
+  .jobInfos > img {
+    width: 86px;
+    height: 86px;
+    position: initial;
+    top: initial;
+    margin-right: 18px;
+  }
+
+  .applyButton {
+    margin-top: 0;
+    margin-left: auto;
+    width: auto;
+  }
+}
