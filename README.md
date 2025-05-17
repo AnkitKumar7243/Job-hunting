@@ -45,7 +45,7 @@ The platform is designed with both job seekers and employers in mind, providing 
 
 ### Prerequisites
 
-- Node.js (v12.0.0 or higher)
+- Node.js (v16.x recommended)
 - npm or yarn
 
 ### Installation
@@ -74,7 +74,7 @@ The platform is designed with both job seekers and employers in mind, providing 
 
 ### Environment Setup
 
-For older Node.js versions (v17+), you may need to set the following environment variable:
+This project uses React 17 with an older version of React Scripts, which requires the legacy OpenSSL provider when running on Node.js v17 or higher. The project is configured to handle this automatically, but if you encounter crypto-related errors, you may need to set the following environment variable:
 
 ```bash
 # Windows (PowerShell)
@@ -83,6 +83,45 @@ $env:NODE_OPTIONS="--openssl-legacy-provider"
 # Linux/macOS
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
+
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+This project includes a `vercel.json` configuration file that sets up the necessary environment for deployment:
+
+1. Sign up for a [Vercel account](https://vercel.com/signup) if you don't have one
+2. Install the Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+3. Deploy the project:
+   ```bash
+   vercel
+   ```
+
+### Deploying to Netlify
+
+This project includes a `netlify.toml` configuration file for easy deployment to Netlify:
+
+1. Sign up for a [Netlify account](https://app.netlify.com/signup) if you don't have one
+2. Install the Netlify CLI:
+   ```bash
+   npm install -g netlify-cli
+   ```
+3. Deploy the project:
+   ```bash
+   netlify deploy
+   ```
+
+### Troubleshooting Deployment Issues
+
+If you encounter the "digital envelope routines::unsupported" error during deployment:
+
+1. Make sure you're using Node.js v16.x (recommended) or have the `NODE_OPTIONS=--openssl-legacy-provider` environment variable set
+2. For Vercel: Check that the `vercel.json` file is in the root directory of your project
+3. For Netlify: Ensure the `netlify.toml` file is properly configured
+4. If using another hosting provider, add the `NODE_OPTIONS=--openssl-legacy-provider` environment variable in your hosting platform's settings
 
 ## 🧩 Project Structure
 
