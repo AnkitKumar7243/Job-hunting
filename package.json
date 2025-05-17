@@ -18,9 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
-    "build:windows": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
-    "build:unix": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "build": "node vercel-build.js",
+    "build:legacy": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

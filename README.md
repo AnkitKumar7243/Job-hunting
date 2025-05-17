@@ -88,17 +88,25 @@ export NODE_OPTIONS=--openssl-legacy-provider
 
 ### Deploying to Vercel
 
-This project includes a `vercel.json` configuration file that sets up the necessary environment for deployment:
+This project includes configuration files to handle the OpenSSL compatibility issue with newer Node.js versions. To deploy to Vercel:
 
 1. Sign up for a [Vercel account](https://vercel.com/signup) if you don't have one
-2. Install the Vercel CLI:
+2. **Important**: When deploying through the Vercel dashboard, add the following environment variable:
+   - Name: `NODE_OPTIONS`
+   - Value: `--openssl-legacy-provider`
+
+3. Alternatively, deploy using the Vercel CLI:
    ```bash
+   # Install Vercel CLI
    npm install -g vercel
+
+   # Deploy with environment variable
+   vercel --env NODE_OPTIONS="--openssl-legacy-provider"
    ```
-3. Deploy the project:
-   ```bash
-   vercel
-   ```
+
+4. If you continue to experience issues, try forcing Node.js 16:
+   - In the Vercel dashboard, go to Project Settings > General > Node.js Version
+   - Select "16.x" from the dropdown menu
 
 ### Deploying to Netlify
 
@@ -116,12 +124,33 @@ This project includes a `netlify.toml` configuration file for easy deployment to
 
 ### Troubleshooting Deployment Issues
 
-If you encounter the "digital envelope routines::unsupported" error during deployment:
+#### "Digital Envelope Routines::Unsupported" Error
 
-1. Make sure you're using Node.js v16.x (recommended) or have the `NODE_OPTIONS=--openssl-legacy-provider` environment variable set
-2. For Vercel: Check that the `vercel.json` file is in the root directory of your project
-3. For Netlify: Ensure the `netlify.toml` file is properly configured
-4. If using another hosting provider, add the `NODE_OPTIONS=--openssl-legacy-provider` environment variable in your hosting platform's settings
+This error occurs because the project uses an older version of React Scripts that's not compatible with newer Node.js versions (17+). To fix it:
+
+1. **For Vercel Deployment**:
+   - Set the `NODE_OPTIONS=--openssl-legacy-provider` environment variable in the Vercel dashboard
+   - Go to Project Settings > Environment Variables
+   - Add the variable and redeploy
+   - Force Node.js 16.x in Project Settings > General > Node.js Version
+
+2. **For Local Development**:
+   - Use Node.js v16.x (recommended)
+   - Or set the environment variable before starting the development server:
+     ```bash
+     # Windows (CMD)
+     set NODE_OPTIONS=--openssl-legacy-provider && npm start
+
+     # Windows (PowerShell)
+     $env:NODE_OPTIONS="--openssl-legacy-provider"; npm start
+
+     # Linux/macOS
+     export NODE_OPTIONS=--openssl-legacy-provider && npm start
+     ```
+
+3. **For Other Hosting Providers**:
+   - Add the `NODE_OPTIONS=--openssl-legacy-provider` environment variable in your hosting platform's settings
+   - Or downgrade to Node.js 16.x if the platform supports version selection
 
 ## 🧩 Project Structure
 
