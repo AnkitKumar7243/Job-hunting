@@ -17,9 +17,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "node vercel-build.js",
-    "build:legacy": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "start": "node run-app.js",
+    "build": "NODE_ENV=production node run-app.js",
+    "dev": "node run-app.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

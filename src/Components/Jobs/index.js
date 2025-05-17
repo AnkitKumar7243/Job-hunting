@@ -11,10 +11,8 @@ const Jobs = () => {
   const groupedJobs = useMemo(() => {
     const grouped = {};
 
-    // If filter is active, use filtered jobs
-    const jobsToGroup = jobs;
-
-    jobsToGroup.forEach(job => {
+    // Use the current jobs array (which is already filtered if filter is active)
+    jobs.forEach(job => {
       if (!grouped[job.role]) {
         grouped[job.role] = [];
       }
@@ -28,7 +26,7 @@ const Jobs = () => {
         acc[key] = grouped[key];
         return acc;
       }, {});
-  }, [jobs, filter]);
+  }, [jobs]); // Only depend on jobs, which already reflects filter changes
 
   return (
     <div className={`${styles.container} ${filter.length === 0 && styles.pddTop}`}>

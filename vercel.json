@@ -1,7 +1,14 @@
 {
-  "build": {
-    "env": {
-      "NODE_OPTIONS": "--openssl-legacy-provider"
-    }
+  "version": 2,
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": null,
+  "outputDirectory": "build",
+  "env": {
+    "NODE_OPTIONS": "--openssl-legacy-provider"
+  },
+  "github": {
+    "silent": true
   }
 }

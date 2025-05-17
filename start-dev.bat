@@ -1,0 +1,6 @@
+@echo off
+echo Setting NODE_OPTIONS environment variable...
+set NODE_OPTIONS=--openssl-legacy-provider
+echo Starting development server...
+npm start
+pause
